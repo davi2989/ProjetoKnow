@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "pergunta": "Qual dessas atividades mais chama sua atenção no dia a dia?",
+    "opcoes": [
+      { "letra": "A", "texto": "Descobrir como softwares, sites e aplicativos funcionam por dentro.", "curso": "Informática" },
+      { "letra": "B", "texto": "Cuidar do bem-estar de pessoas, entender sobre biologia e saúde.", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Organizar processos, liderar equipes ou planejar o futuro de um negócio.", "curso": "Administração" }
+    ]
+  },
+  {
+    "id": 2,
+    "pergunta": "Nas horas livres ou em projetos escolares, você prefere focar em:",
+    "opcoes": [
+      { "letra": "A", "texto": "Resolver quebra-cabeças lógicos, criar planilhas complexas ou programar.", "curso": "Informática" },
+      { "letra": "B", "texto": "Prestar apoio a quem precisa, fazer trabalhos voluntários ou pesquisar anatomia.", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Vender um produto, negociar ideias ou planejar estratégias financeiras.", "curso": "Administração" }
+    ]
+  },
+  {
+    "id": 3,
+    "pergunta": "Como você reage diante de um grande problema inesperado?",
+    "opcoes": [
+      { "letra": "A", "texto": "Analiso os dados isoladamente e busco uma solução técnica passo a passo.", "curso": "Informática" },
+      { "letra": "B", "texto": "Mantenho a calma, ajo com empatia e priorizo o cuidado imediato às pessoas.", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Olho o cenário macro, delego tarefas para o grupo e foco no resultado final.", "curso": "Administração" }
+    ]
+  }
+]

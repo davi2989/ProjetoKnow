@@ -1,0 +1,20 @@
+[
+  {
+    "id": "desc_10",
+    "icon": "🎟️",
+    "name": "10% de Desconto",
+    "sub": "Na sua primeira mensalidade!"
+  },
+  {
+    "id": "isencao",
+    "icon": "🎁",
+    "name": "Isenção de Matrícula",
+    "sub": "Sua taxa de matrícula sai de graça!"
+  },
+  {
+    "id": "kit",
+    "icon": "🎒",
+    "name": "Kit KNOW Oficial",
+    "sub": "Caderno, mochila e caneta do colégio!"
+  }
+]

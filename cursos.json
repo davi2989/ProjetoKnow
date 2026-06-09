@@ -1,0 +1,41 @@
+[
+  {
+    "id": "info",
+    "emoji": "💻",
+    "nome": "Informática",
+    "duracao": "3 SEMESTRES • NOTURNO",
+    "descricao": "Domine o desenvolvimento de software, arquitetura de redes e banco de dados. Prepare-se para o mercado de tecnologia com foco prático em codificação e resolução de problemas complexos.",
+    "tags": [
+      "Full-Stack",
+      "Python & JS",
+      "Redes",
+      "Web Dev"
+    ]
+  },
+  {
+    "id": "enf",
+    "emoji": "🩺",
+    "nome": "Enfermagem",
+    "duracao": "4 SEMESTRES • MATUTINO / NOTURNO",
+    "descricao": "Formação humana e técnica voltada para o cuidado integral à saúde. Práticas em laboratórios modernos e estágios garantidos em hospitais renomados da região desde os primeiros períodos.",
+    "tags": [
+      "Anatomia",
+      "Prática Hospitalar",
+      "Cuidados",
+      "Urgência"
+    ]
+  },
+  {
+    "id": "adm",
+    "emoji": "📊",
+    "nome": "Administração",
+    "duracao": "3 SEMESTRES • NOTURNO",
+    "descricao": "Desenvolva uma visão estratégica de negócios. Aprenda sobre gestão financeira, marketing digital, liderança de equipes e empreendedorismo para se destacar em grandes corporações ou criar sua própria startup.",
+    "tags": [
+      "Finanças",
+      "Gestão",
+      "Marketing",
+      "Startups"
+    ]
+  }
+]
