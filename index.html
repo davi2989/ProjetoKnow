@@ -1,304 +1,275 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colégio Técnico KNOW</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/quiz.css">
-    <link rel="stylesheet" href="css/formulario.css">
-    <link rel="stylesheet" href="css/matricula.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="raspa.css">
 </head>
-
 <body>
 
-    <nav>
-        <a href="#home" class="logo">
-            <div class="logo-icon">K</div>
-            <span class="logo-text">KNOW <span>TECH</span></span>
-        </a>
-        <ul>
-            <li><a href="#home">Início</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#cursos">Cursos</a></li>
-            <li><a href="#apps">Aplicativos</a></li>
-            <li><a href="#matricula" class="nav-cta">Matricule-se</a></li>
-        </ul>
-    </nav>
+<nav>
+    <a href="#home" class="logo">
+        <div class="logo-icon">K</div>
+        <span class="logo-text">KNOW <span>TECH</span></span>
+    </a>
+    <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#cursos">Cursos</a></li>
+        <li><a href="#apps">Aplicativos</a></li>
+        <li><a href="#matricula" class="nav-cta">Matricule-se</a></li>
+    </ul>
+</nav>
 
-    <section id="home">
-        <div class="hero-grid-bg"></div>
-        <div class="hero-glow"></div>
-        <div class="hero-content">
-            <div class="hero-badge"><span></span> Inscrições abertas 2026</div>
-            <h1 class="hero-title">Seu futuro<span class="accent">começa aqui.</span></h1>
-            <p class="hero-sub">Conhecimento que transforma, tecnologia que conecta, futuro que acontece.</p>
-            <div class="hero-btns">
-                <a href="#cursos" class="btn-primary">Ver Cursos</a>
-                <a href="#apps" class="btn-outline">Fazer o Quiz Vocacional</a>
+<!-- ── HOME ── -->
+<section id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+        <div class="hero-badge"><span></span> Inscrições abertas 2026</div>
+        <h1 class="hero-title">Seu futuro<span class="accent">começa aqui.</span></h1>
+        <p class="hero-sub">Conhecimento que transforma, tecnologia que conecta, futuro que acontece.</p>
+        <div class="hero-btns">
+            <a href="#cursos" class="btn-primary">Ver Cursos</a>
+            <a href="#apps" class="btn-outline">Fazer o Quiz Vocacional</a>
+        </div>
+        <div class="hero-stats">
+            <div><div class="stat-num">+5.000</div><div class="stat-label">Alunos formados</div></div>
+            <div><div class="stat-num">3</div><div class="stat-label">Cursos técnicos</div></div>
+            <div><div class="stat-num">98%</div><div class="stat-label">Empregabilidade</div></div>
+        </div>
+    </div>
+    <div class="hero-img-area">
+        <div class="hero-visual">
+            <div class="floating-card">
+                <div class="card-icon">💻</div>
+                <div class="card-title">Técnico em Informática</div>
+                <div class="card-desc">Desenvolvimento Web, Redes &amp; IA</div>
             </div>
-            <div class="hero-stats">
-                <div>
-                    <div class="stat-num">+5.000</div>
-                    <div class="stat-label">Alunos formados</div>
-                </div>
-                <div>
-                    <div class="stat-num">3</div>
-                    <div class="stat-label">Cursos técnicos</div>
-                </div>
-                <div>
-                    <div class="stat-num">98%</div>
-                    <div class="stat-label">Empregabilidade</div>
-                </div>
+            <div class="floating-card">
+                <div class="card-icon">🏥</div>
+                <div class="card-title">Técnico em Enfermagem</div>
+                <div class="card-desc">Saúde, Cuidados &amp; Procedimentos</div>
+            </div>
+            <div class="floating-card">
+                <div class="card-icon">📊</div>
+                <div class="card-title">Técnico em Administração</div>
+                <div class="card-desc">Gestão, Finanças &amp; Liderança</div>
             </div>
         </div>
-        <div class="hero-img-area">
-            <div class="hero-visual">
-                <div class="floating-card">
-                    <div class="card-icon">💻</div>
-                    <div class="card-title">Técnico em Informática</div>
-                    <div class="card-desc">Desenvolvimento Web, Redes &amp; IA</div>
-                </div>
-                <div class="floating-card">
-                    <div class="card-icon">🏥</div>
-                    <div class="card-title">Técnico em Enfermagem</div>
-                    <div class="card-desc">Saúde, Cuidados &amp; Procedimentos</div>
-                </div>
-                <div class="floating-card">
-                    <div class="card-icon">📊</div>
-                    <div class="card-title">Técnico em Administração</div>
-                    <div class="card-desc">Gestão, Finanças &amp; Liderança</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <section id="sobre">
-        <div class="sobre-grid">
-            <div class="fade-in">
-                <span class="section-label">Quem somos</span>
-                <h2 class="section-title">Educação que transforma trajetórias</h2>
-                <p class="section-desc">Fundado em 2010, o Colégio Técnico KNOW nasceu com a missão de preencher a
-                    lacuna entre o ensino tradicional e as reais demandas do mercado de trabalho de alta performance.
-                    Com laboratórios modernos e metodologia prática, a instituição já formou mais de 5.000 profissionais
-                    que hoje atuam em grandes empresas, hospitais e setores administrativos de todo o país.</p>
-                <p class="section-desc" style="margin-top:1rem">Nossa metodologia une conhecimento teórico rigoroso,
-                    prática de mercado e valores éticos humanos — porque acreditamos que a educação técnica de qualidade
-                    é o caminho mais direto para a empregabilidade e a transformação social.</p>
-                <div class="sobre-values">
-                    <div class="value-tag"><strong>Missão</strong>Formar profissionais técnicos de excelência, unindo
-                        conhecimento teórico rigoroso, prática de mercado e valores éticos humanos.</div>
-                    <div class="value-tag"><strong>Visão</strong>Ser reconhecido até 2030 como o principal ecossistema
-                        de ensino técnico focado em empregabilidade e inovação do estado.</div>
-                    <div class="value-tag"><strong>Inovação</strong>Inovação constante; Ética e Cuidado com o próximo;
-                        Protagonismo do aluno.</div>
-                    <div class="value-tag"><strong>Valores</strong>Excelência técnica orientada para o mercado e para a
-                        transformação humana.</div>
-                </div>
+<!-- ── SOBRE ── -->
+<section id="sobre">
+    <div class="sobre-grid">
+        <div class="fade-in">
+            <span class="section-label">Quem somos</span>
+            <h2 class="section-title">Educação que transforma trajetórias</h2>
+            <p class="section-desc">Fundado em 2010, o Colégio Técnico KNOW nasceu com a missão de preencher a lacuna entre o ensino tradicional e as reais demandas do mercado de trabalho de alta performance. Com laboratórios modernos e metodologia prática, a instituição já formou mais de 5.000 profissionais que hoje atuam em grandes empresas, hospitais e setores administrativos de todo o país.</p>
+            <p class="section-desc" style="margin-top:1rem">Nossa metodologia une conhecimento teórico rigoroso, prática de mercado e valores éticos humanos — porque acreditamos que a educação técnica de qualidade é o caminho mais direto para a empregabilidade e a transformação social.</p>
+            <div class="sobre-values">
+                <div class="value-tag"><strong>Missão</strong>Formar profissionais técnicos de excelência, unindo conhecimento teórico rigoroso, prática de mercado e valores éticos humanos.</div>
+                <div class="value-tag"><strong>Visão</strong>Ser reconhecido até 2030 como o principal ecossistema de ensino técnico focado em empregabilidade e inovação do estado.</div>
+                <div class="value-tag"><strong>Inovação</strong>Inovação constante; Ética e Cuidado com o próximo; Protagonismo do aluno.</div>
+                <div class="value-tag"><strong>Valores</strong>Excelência técnica orientada para o mercado e para a transformação humana.</div>
             </div>
-            <div class="fade-in">
-                <div class="sobre-box">
-                    <div class="timeline">
-                        <div class="tl-item">
-                            <div class="tl-year">2010</div>
-                            <div class="tl-dot"></div>
-                            <div class="tl-text">Fundação do Colégio Técnico KNOW com o primeiro curso técnico em
-                                Administração.</div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-year">2011</div>
-                            <div class="tl-dot"></div>
-                            <div class="tl-text">Abertura do curso técnico em Enfermagem, ampliando a área da saúde.
-                            </div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-year">2013</div>
-                            <div class="tl-dot"></div>
-                            <div class="tl-text">Lançamento do curso de Informática com laboratórios de última geração.
-                            </div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-year">2020</div>
-                            <div class="tl-dot"></div>
-                            <div class="tl-text">Pioneiros no ensino híbrido durante a pandemia, sem interrupção das
-                                aulas.</div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-year">2026</div>
-                            <div class="tl-dot"></div>
-                            <div class="tl-text">Lançamento do Portal Digital Integrado com IA e ferramentas de
-                                engajamento.</div>
-                        </div>
+        </div>
+        <div class="fade-in">
+            <div class="sobre-box">
+                <div class="timeline">
+                    <div class="tl-item">
+                        <div class="tl-year">2010</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">Fundação do Colégio Técnico KNOW com o primeiro curso técnico em Administração.</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">2011</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">Abertura do curso técnico em Enfermagem, ampliando a área da saúde.</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">2013</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">Lançamento do curso de Informática com laboratórios de última geração.</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">2020</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">Pioneiros no ensino híbrido durante a pandemia, sem interrupção das aulas.</div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">2026</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">Lançamento do Portal Digital Integrado com IA e ferramentas de engajamento.</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="cursos">
-        <span class="section-label">Formação técnica</span>
-        <h2 class="section-title">Nossos Cursos</h2>
-        <p class="section-desc">Três áreas do conhecimento, infinitas possibilidades. Escolha o caminho que combina com
-            o seu perfil.</p>
-        <!-- Cards gerados dinamicamente pelo script.js a partir de cursos.json -->
-        <div class="cursos-grid" id="cursos-grid"></div>
-    </section>
+<!-- ── CURSOS ── -->
+<section id="cursos">
+    <span class="section-label">Formação técnica</span>
+    <h2 class="section-title">Nossos Cursos</h2>
+    <p class="section-desc">Três áreas do conhecimento, infinitas possibilidades. Escolha o caminho que combina com o seu perfil.</p>
+    <div class="cursos-grid" id="cursos-grid">
+        <!-- renderizado via JS -->
+    </div>
+</section>
 
-    <section id="apps">
-        <div class="apps-intro">
-            <span class="section-label">Hub de aplicações</span>
-            <h2 class="section-title">Ferramentas Interativas</h2>
-            <p class="section-desc">Explore nossas ferramentas digitais: descubra seu curso ideal, concorra a brindes e
-                faça seu pré-cadastro.</p>
-        </div>
-        <div class="apps-nav">
-            <div class="app-tab active" onclick="switchTab('quiz')">🧠 Quiz Vocacional</div>
-            <div class="app-tab" onclick="switchTab('raspa')">🎰 Raspadinha</div>
-            <div class="app-tab" onclick="switchTab('form')">📋 Pré-Cadastro</div>
-        </div>
+<!-- ── APPS ── -->
+<section id="apps">
+    <div class="apps-intro">
+        <span class="section-label">Hub de aplicações</span>
+        <h2 class="section-title">Ferramentas Interativas</h2>
+        <p class="section-desc">Explore nossas ferramentas digitais: descubra seu curso ideal, concorra a brindes e faça seu pré-cadastro.</p>
+    </div>
+    <div class="apps-nav">
+        <div class="app-tab active" onclick="switchTab('quiz')">🧠 Quiz Vocacional</div>
+        <div class="app-tab" onclick="switchTab('raspa')">🎰 Raspadinha</div>
+        <div class="app-tab" onclick="switchTab('form')">📋 Pré-Cadastro</div>
+    </div>
 
-        <div class="app-panel active" id="panel-quiz">
-            <div class="quiz-wrap">
-                <div class="quiz-screen active" id="quiz-welcome">
-                    <div class="quiz-welcome-title">Qual é a sua Profissão do Futuro?</div>
-                    <p class="quiz-welcome-sub">Responda algumas perguntas rápidas e descubra qual curso do Colégio KNOW
-                        combina com o seu perfil. Leva menos de 2 minutos!</p>
-                    <button class="btn-primary" onclick="startQuiz()">Iniciar Quiz →</button>
-                </div>
-                <div class="quiz-screen" id="quiz-question">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="quiz-bar" style="width:0%"></div>
-                    </div>
-                    <div class="progress-label" id="quiz-prog-label">Pergunta 1 de 5</div>
-                    <div class="quiz-question" id="quiz-q-text"></div>
-                    <div class="quiz-opts" id="quiz-opts"></div>
-                </div>
-                <div class="quiz-screen" id="quiz-result">
-                    <div class="quiz-result-icon" id="result-icon"></div>
-                    <div
-                        style="font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-claro);margin-bottom:.5rem">
-                        Seu perfil indica</div>
-                    <div class="quiz-result-course" id="result-course"></div>
-                    <p class="quiz-result-text" id="result-text"></p>
-                    <div class="quiz-result-btns">
-                        <a href="#matricula" class="btn-primary">Quero me matricular!</a>
-                        <button class="btn-outline" onclick="resetQuiz()">Refazer Quiz</button>
-                    </div>
+    <!-- QUIZ -->
+    <div class="app-panel active" id="panel-quiz">
+        <div class="quiz-wrap">
+            <div class="quiz-screen active" id="quiz-welcome">
+                <div class="quiz-welcome-title">Qual é a sua Profissão do Futuro?</div>
+                <p class="quiz-welcome-sub">Responda 5 perguntas rápidas e descubra qual curso do Colégio KNOW combina com o seu perfil. Leva menos de 2 minutos!</p>
+                <button class="btn-primary" onclick="startQuiz()">Iniciar Quiz →</button>
+            </div>
+            <div class="quiz-screen" id="quiz-question">
+                <div class="progress-bar"><div class="progress-fill" id="quiz-bar" style="width:0%"></div></div>
+                <div class="progress-label" id="quiz-prog-label">Pergunta 1 de 5</div>
+                <div class="quiz-question" id="quiz-q-text"></div>
+                <div class="quiz-opts" id="quiz-opts"></div>
+            </div>
+            <div class="quiz-screen" id="quiz-result">
+                <div class="quiz-result-icon" id="result-icon"></div>
+                <div style="font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--cinza-claro);margin-bottom:.5rem">Seu perfil indica</div>
+                <div class="quiz-result-course" id="result-course"></div>
+                <p class="quiz-result-text" id="result-text"></p>
+                <div class="quiz-result-btns">
+                    <a href="#matricula" class="btn-primary">Quero me matricular!</a>
+                    <button class="btn-outline" onclick="resetQuiz()">Refazer Quiz</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="app-panel" id="panel-raspa">
-            <div class="raspa-wrap">
-                <div class="raspa-title">🎰 Raspadinha KNOW</div>
-                <p class="raspa-sub" id="raspa-instrucao">Segure e arraste o mouse para raspar e descobrir seu brinde!
-                    Válido uma vez por dia.</p>
-                <div class="raspa-canvas-wrap">
-                    <div id="raspa-premio-bg" class="raspa-premio-bg">
-                        <div id="raspa-icon" class="raspa-icon-display">🎁</div>
-                        <div id="raspa-nome" class="raspa-nome-display">Surpresa!</div>
-                        <div id="raspa-sub-txt" class="raspa-sub-txt-display"></div>
-                    </div>
-                    <canvas id="raspa-canvas" class="raspa-canvas"></canvas>
-                </div>
-                <div class="raspa-prog-wrap">
-                    <div id="raspa-progresso" class="raspa-progresso">
-                        <div id="raspa-prog-fill" class="raspa-prog-fill"></div>
-                    </div>
-                    <div id="raspa-prog-label" class="raspa-prog-label">0% raspado</div>
-                </div>
-                <div class="raspa-msg" id="raspa-msg"></div>
-                <button class="btn-outline" style="margin-top:1rem" onclick="initRaspa()">🔄 Nova Raspadinha</button>
-            </div>
-        </div>
+    <!-- RASPADINHA LOTERIA -->
+    <div class="app-panel" id="panel-raspa">
+        <div class="lottery-wrap">
+            <div class="lottery-title">🎰 Raspadinha KNOW</div>
+            <p class="lottery-sub">Raspe as 9 caselas com o mouse. Se três símbolos iguais aparecerem em uma fileira — você ganhou aquele prêmio!</p>
 
-        <div class="app-panel" id="panel-form">
-            <div class="form-wrap">
-                <div class="form-section">
-                    <div class="form-title">📋 Pré-Cadastro</div>
-                    <div class="form-group">
-                        <label class="form-label">Nome completo *</label>
-                        <input type="text" class="form-input" id="f-nome" placeholder="Seu nome completo">
-                        <div class="form-error" id="err-nome">Informe seu nome completo (mín. 3 caracteres).</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Idade *</label>
-                        <input type="number" class="form-input" id="f-idade" placeholder="Sua idade" min="14" max="80">
-                        <div class="form-error" id="err-idade">Informe uma idade válida (14 a 80 anos).</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">E-mail *</label>
-                        <input type="text" class="form-input" id="f-email" placeholder="seu@email.com">
-                        <div class="form-error" id="err-email">Informe um e-mail válido.</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Curso de interesse *</label>
-                        <!-- Opções geradas dinamicamente pelo script.js a partir de cursos.json -->
-                        <select class="form-select" id="f-curso">
-                            <option value="">Selecione um curso</option>
-                        </select>
-                        <div class="form-error" id="err-curso">Selecione um curso de interesse.</div>
-                    </div>
-                    <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Cadastro →</button>
-                    <div class="form-success" id="form-success">✅ Cadastro realizado! Em breve entraremos em contato.
-                    </div>
-                </div>
-                <div class="form-section">
-                    <div class="form-title">👁 Painel Administrativo</div>
-                    <div class="leads-count" id="leads-count"></div>
-                    <div id="leads-container">
-                        <div class="admin-empty">Nenhum cadastro ainda. Os dados aparecerão aqui após envio do
-                            formulário.</div>
-                    </div>
-                    <button class="btn-danger" style="margin-top:1.5rem" onclick="clearLeads()">🗑 Limpar todos os
-                        dados</button>
-                </div>
+            <div id="lottery-blocked-msg" style="display:none" class="lottery-blocked">
+                🚫 Você já participou hoje! Volte amanhã para tentar novamente.
             </div>
-        </div>
-    </section>
 
-    <section id="matricula">
-        <div class="matricula-inner fade-in">
-            <span class="section-label">Próximo passo</span>
-            <h2 class="section-title">Pronto para transformar seu futuro?</h2>
-            <p class="section-desc">As vagas são limitadas. Garanta sua matrícula agora e dê o primeiro passo rumo à
-                carreira que você merece.</p>
-            <div class="matricula-btns">
-                <a href="#apps" class="btn-primary" onclick="setTimeout(()=>switchTab('form'),300)">Fazer
-                    Pré-Cadastro</a>
-                <a href="#cursos" class="btn-outline">Conhecer os Cursos</a>
-            </div>
-        </div>
-    </section>
+            <div id="lottery-game">
+                <div class="lottery-card">
+                    <div class="lottery-card-header">
+                        <span class="lottery-brand">✦ KNOW TECH ✦</span>
+                        <span class="lottery-prize-label">Raspe e ganhe!</span>
+                    </div>
 
-    <footer>
-        <div>
-            <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem">
-                <div
-                    style="width:32px;height:32px;background:var(--amarelo);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--preto);clip-path:polygon(10% 0%,90% 0%,100% 10%,100% 90%,90% 100%,10% 100%,0% 90%,0% 10%)">
-                    K</div>
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px">KNOW <span
-                        style="color:var(--amarelo)">TECH</span></span>
-            </div>
-            <div class="footer-copy" style="margin-bottom:.4rem">© 2026 Colégio Técnico KNOW — ULBRA São Lucas. Todos os
-                direitos reservados.</div>
-            <div style="font-size:.8rem;color:var(--cinza-claro);line-height:1.8">
-                📍 Av. da Inovação, nº 1024 – Bairro Distrito Tech<br>
-                📞 (51) 3003-KNOW &nbsp;|&nbsp; ✉️ matriculas@colegioknow.com.br<br>
-                📱 @colegioknowoficial
+                    <div class="lottery-legend" id="lottery-legend"></div>
+
+                    <p class="lottery-instructions">Clique e arraste sobre cada casela para revelar o símbolo</p>
+
+                    <div class="lottery-grid" id="lottery-grid"></div>
+                </div>
+
+                <div class="lottery-prize-reveal" id="lottery-result"></div>
+
+                <button class="btn-outline" style="margin-top:1.25rem" onclick="initLottery()">🔄 Nova Raspadinha</button>
             </div>
         </div>
-        <div class="footer-links">
-            <a href="#home">Início</a><a href="#sobre">Sobre</a><a href="#cursos">Cursos</a><a
-                href="#apps">Aplicativos</a><a href="#matricula">Matrícula</a>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <div class="app-panel" id="panel-form">
+        <div class="form-wrap">
+            <div class="form-section">
+                <div class="form-title">📋 Pré-Cadastro</div>
+                <div class="form-group">
+                    <label class="form-label">Nome completo *</label>
+                    <input type="text" class="form-input" id="f-nome" placeholder="Seu nome completo">
+                    <div class="form-error" id="err-nome">Informe seu nome completo (mín. 3 caracteres).</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Idade *</label>
+                    <input type="number" class="form-input" id="f-idade" placeholder="Sua idade" min="14" max="80">
+                    <div class="form-error" id="err-idade">Informe uma idade válida (14 a 80 anos).</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">E-mail *</label>
+                    <input type="text" class="form-input" id="f-email" placeholder="seu@email.com">
+                    <div class="form-error" id="err-email">Informe um e-mail válido.</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Curso de interesse *</label>
+                    <select class="form-select" id="f-curso">
+                        <option value="">Selecione um curso</option>
+                        <option value="Técnico em Informática">Técnico em Informática</option>
+                        <option value="Técnico em Enfermagem">Técnico em Enfermagem</option>
+                        <option value="Técnico em Administração">Técnico em Administração</option>
+                    </select>
+                    <div class="form-error" id="err-curso">Selecione um curso de interesse.</div>
+                </div>
+                <button class="btn-primary" style="width:100%" onclick="submitForm()">Enviar Cadastro →</button>
+                <div class="form-success" id="form-success">✅ Cadastro realizado! Em breve entraremos em contato.</div>
+            </div>
+            <div class="form-section">
+                <div class="form-title">👁 Painel Administrativo</div>
+                <div class="leads-count" id="leads-count"></div>
+                <div id="leads-container">
+                    <div class="admin-empty">Nenhum cadastro ainda. Os dados aparecerão aqui após envio do formulário.</div>
+                </div>
+                <button class="btn-danger" style="margin-top:1.5rem" onclick="clearLeads()">🗑 Limpar todos os dados</button>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- ── MATRÍCULA ── -->
+<section id="matricula">
+    <div class="matricula-inner fade-in">
+        <span class="section-label">Próximo passo</span>
+        <h2 class="section-title">Pronto para transformar seu futuro?</h2>
+        <p class="section-desc">As vagas são limitadas. Garanta sua matrícula agora e dê o primeiro passo rumo à carreira que você merece.</p>
+        <div class="matricula-btns">
+            <a href="#apps" class="btn-primary" onclick="setTimeout(()=>switchTab('form'),300)">Fazer Pré-Cadastro</a>
+            <a href="#cursos" class="btn-outline">Conhecer os Cursos</a>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div>
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem">
+            <div style="width:32px;height:32px;background:var(--amarelo);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--preto);clip-path:polygon(10% 0%,90% 0%,100% 10%,100% 90%,90% 100%,10% 100%,0% 90%,0% 10%)">K</div>
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px">KNOW <span style="color:var(--amarelo)">TECH</span></span>
+        </div>
+        <div class="footer-copy" style="margin-bottom:.4rem">© 2026 Colégio Técnico KNOW — ULBRA São Lucas. Todos os direitos reservados.</div>
+        <div style="font-size:.8rem;color:var(--cinza-claro);line-height:1.8">
+            📍 Av. da Inovação, nº 1024 – Bairro Distrito Tech<br>
+            📞 (51) 3003-KNOW &nbsp;|&nbsp; ✉️ matriculas@colegioknow.com.br<br>
+            📱 @colegioknowoficial
+        </div>
+    </div>
+    <div class="footer-links">
+        <a href="#home">Início</a><a href="#sobre">Sobre</a><a href="#cursos">Cursos</a><a href="#apps">Aplicativos</a><a href="#matricula">Matrícula</a>
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>

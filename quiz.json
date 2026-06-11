@@ -1,137 +1,137 @@
 [
   {
     "id": 1,
-    "pergunta": "Qual dessas atividades mais chama sua atenção no dia a dia?",
+    "pergunta": "O que mais te atrai no dia a dia?",
     "opcoes": [
-      { "letra": "A", "texto": "Descobrir como softwares, sites e aplicativos funcionam por dentro.", "curso": "Informática" },
-      { "letra": "B", "texto": "Cuidar do bem-estar de pessoas, entender sobre biologia e saúde.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Organizar processos, liderar equipes ou planejar o futuro de um negócio.", "curso": "Administração" }
+      { "letra": "A", "texto": "Resolver problemas com lógica e tecnologia", "curso": "Informática" },
+      { "letra": "B", "texto": "Ajudar e cuidar de outras pessoas", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Organizar projetos e liderar equipes", "curso": "Administração" }
     ]
   },
   {
     "id": 2,
-    "pergunta": "Nas horas livres ou em projetos escolares, você prefere focar em:",
+    "pergunta": "Qual atividade você curte mais?",
     "opcoes": [
-      { "letra": "A", "texto": "Resolver quebra-cabeças lógicos, criar planilhas complexas ou programar.", "curso": "Informática" },
-      { "letra": "B", "texto": "Prestar apoio a quem precisa, fazer trabalhos voluntários ou pesquisar anatomia.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Vender um produto, negociar ideias ou planejar estratégias financeiras.", "curso": "Administração" }
+      { "letra": "A", "texto": "Programar, montar ou mexer no computador", "curso": "Informática" },
+      { "letra": "B", "texto": "Trabalhar em equipe com foco no humano", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Planejar tarefas e tomar decisões estratégicas", "curso": "Administração" }
     ]
   },
   {
     "id": 3,
-    "pergunta": "Como você reage diante de um grande problema inesperado?",
+    "pergunta": "Qual é o seu estilo de trabalho?",
     "opcoes": [
-      { "letra": "A", "texto": "Analiso os dados isoladamente e busco uma solução técnica passo a passo.", "curso": "Informática" },
-      { "letra": "B", "texto": "Mantenho a calma, ajo com empatia e priorizo o cuidado imediato às pessoas.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Olho o cenário macro, delego tarefas para o grupo e foco no resultado final.", "curso": "Administração" }
+      { "letra": "A", "texto": "Autônomo, criativo e focado em resultados técnicos", "curso": "Informática" },
+      { "letra": "B", "texto": "Colaborativo, empático e humano", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Focado, analítico e estratégico", "curso": "Administração" }
     ]
   },
   {
     "id": 4,
-    "pergunta": "Qual é o seu estilo de trabalho?",
+    "pergunta": "Onde você se imagina trabalhando no futuro?",
     "opcoes": [
-      { "letra": "A", "texto": "Autônomo, criativo e focado em resultados técnicos.", "curso": "Informática" },
-      { "letra": "B", "texto": "Colaborativo, empático e voltado para o humano.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Focado, analítico e estratégico.", "curso": "Administração" }
+      { "letra": "A", "texto": "Em uma empresa de tecnologia ou startup", "curso": "Informática" },
+      { "letra": "B", "texto": "Em um hospital, clínica ou unidade de saúde", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Em um escritório ou como empreendedor", "curso": "Administração" }
     ]
   },
   {
     "id": 5,
-    "pergunta": "Onde você se imagina trabalhando?",
+    "pergunta": "Qual matéria mais desperta seu interesse?",
     "opcoes": [
-      { "letra": "A", "texto": "Em uma empresa de tecnologia ou startup.", "curso": "Informática" },
-      { "letra": "B", "texto": "Em um hospital, clínica ou unidade de saúde.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Em um escritório ou como empreendedor.", "curso": "Administração" }
+      { "letra": "A", "texto": "Matemática, tecnologia ou programação", "curso": "Informática" },
+      { "letra": "B", "texto": "Biologia, anatomia ou saúde", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Economia, história ou gestão", "curso": "Administração" }
     ]
   },
   {
     "id": 6,
-    "pergunta": "Qual matéria mais te interessa?",
+    "pergunta": "Você prefere lidar com:",
     "opcoes": [
-      { "letra": "A", "texto": "Matemática, tecnologia ou programação.", "curso": "Informática" },
-      { "letra": "B", "texto": "Biologia, anatomia ou saúde.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Economia, história ou gestão.", "curso": "Administração" }
+      { "letra": "A", "texto": "Máquinas, sistemas e dados", "curso": "Informática" },
+      { "letra": "B", "texto": "Pessoas e situações de cuidado", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Processos, finanças e estratégias", "curso": "Administração" }
     ]
   },
   {
     "id": 7,
-    "pergunta": "Você prefere lidar com:",
+    "pergunta": "Como você resolve problemas complexos?",
     "opcoes": [
-      { "letra": "A", "texto": "Máquinas, sistemas e dados.", "curso": "Informática" },
-      { "letra": "B", "texto": "Pessoas e situações de cuidado.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Processos, finanças e estratégias.", "curso": "Administração" }
+      { "letra": "A", "texto": "Analisando dados e buscando soluções técnicas passo a passo", "curso": "Informática" },
+      { "letra": "B", "texto": "Com empatia e apoio às pessoas envolvidas", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Organizando prioridades e delegando tarefas", "curso": "Administração" }
     ]
   },
   {
     "id": 8,
     "pergunta": "O que você mais valoriza num trabalho?",
     "opcoes": [
-      { "letra": "A", "texto": "Inovação constante e desafios técnicos.", "curso": "Informática" },
-      { "letra": "B", "texto": "Impacto positivo na vida das pessoas.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Crescimento profissional e reconhecimento.", "curso": "Administração" }
+      { "letra": "A", "texto": "Inovação constante e desafios técnicos", "curso": "Informática" },
+      { "letra": "B", "texto": "Impacto positivo na vida das pessoas", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Crescimento profissional e reconhecimento", "curso": "Administração" }
     ]
   },
   {
     "id": 9,
     "pergunta": "Qual hobby mais combina com você?",
     "opcoes": [
-      { "letra": "A", "texto": "Games, programação ou montar equipamentos.", "curso": "Informática" },
-      { "letra": "B", "texto": "Voluntariado, cuidar de alguém ou primeiros socorros.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Empreender, investir ou gerir projetos.", "curso": "Administração" }
+      { "letra": "A", "texto": "Games, programação ou montar equipamentos", "curso": "Informática" },
+      { "letra": "B", "texto": "Voluntariado, cuidar de alguém ou primeiros socorros", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Empreender, investir ou gerir projetos", "curso": "Administração" }
     ]
   },
   {
     "id": 10,
     "pergunta": "Em um projeto em grupo, você costuma:",
     "opcoes": [
-      { "letra": "A", "texto": "Ser o responsável pela parte técnica.", "curso": "Informática" },
-      { "letra": "B", "texto": "Cuidar do bem-estar e comunicação do time.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Liderar o planejamento e organização geral.", "curso": "Administração" }
+      { "letra": "A", "texto": "Ser o responsável pela parte técnica e digital", "curso": "Informática" },
+      { "letra": "B", "texto": "Cuidar do bem-estar e comunicação do time", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Liderar o planejamento e organização geral", "curso": "Administração" }
     ]
   },
   {
     "id": 11,
     "pergunta": "Quando crescer, você quer ser reconhecido por:",
     "opcoes": [
-      { "letra": "A", "texto": "Criar tecnologias que mudam o mundo.", "curso": "Informática" },
-      { "letra": "B", "texto": "Salvar ou melhorar a vida das pessoas.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Construir empresas ou instituições de sucesso.", "curso": "Administração" }
+      { "letra": "A", "texto": "Criar tecnologias que mudam o mundo", "curso": "Informática" },
+      { "letra": "B", "texto": "Salvar ou melhorar a vida das pessoas", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Construir empresas ou instituições de sucesso", "curso": "Administração" }
     ]
   },
   {
     "id": 12,
-    "pergunta": "Qual filme te atrai mais?",
+    "pergunta": "Qual tipo de filme te atrai mais?",
     "opcoes": [
-      { "letra": "A", "texto": "Ficção científica com robôs e hackers.", "curso": "Informática" },
-      { "letra": "B", "texto": "Drama hospitalar ou histórias de superação.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Documentário sobre grandes negócios ou liderança.", "curso": "Administração" }
+      { "letra": "A", "texto": "Ficção científica com robôs, IA e hackers", "curso": "Informática" },
+      { "letra": "B", "texto": "Drama hospitalar ou histórias de superação humana", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Documentário sobre grandes negócios e liderança", "curso": "Administração" }
     ]
   },
   {
     "id": 13,
     "pergunta": "Numa feira de carreiras, você vai primeiro no estande de:",
     "opcoes": [
-      { "letra": "A", "texto": "Startups de tecnologia e desenvolvimento de software.", "curso": "Informática" },
-      { "letra": "B", "texto": "Hospitais, clínicas e cursos da área da saúde.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Consultorias, bancos e gestão empresarial.", "curso": "Administração" }
+      { "letra": "A", "texto": "Startups de tecnologia e desenvolvimento de software", "curso": "Informática" },
+      { "letra": "B", "texto": "Hospitais, clínicas e cursos da área da saúde", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Consultorias, bancos e gestão empresarial", "curso": "Administração" }
     ]
   },
   {
     "id": 14,
     "pergunta": "Você se considera mais:",
     "opcoes": [
-      { "letra": "A", "texto": "Lógico e analítico.", "curso": "Informática" },
-      { "letra": "B", "texto": "Sensível e cuidadoso.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Estratégico e ambicioso.", "curso": "Administração" }
+      { "letra": "A", "texto": "Lógico, analítico e metódico", "curso": "Informática" },
+      { "letra": "B", "texto": "Sensível, cuidadoso e presente", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Estratégico, ambicioso e organizado", "curso": "Administração" }
     ]
   },
   {
     "id": 15,
-    "pergunta": "Que tipo de notícia você lê mais?",
+    "pergunta": "Que tipo de notícia você consome mais?",
     "opcoes": [
-      { "letra": "A", "texto": "Tecnologia, inteligência artificial e inovação.", "curso": "Informática" },
-      { "letra": "B", "texto": "Saúde, medicina e bem-estar.", "curso": "Enfermagem" },
-      { "letra": "C", "texto": "Economia, política e empreendedorismo.", "curso": "Administração" }
+      { "letra": "A", "texto": "Tecnologia, inteligência artificial e inovação", "curso": "Informática" },
+      { "letra": "B", "texto": "Saúde, medicina, bem-estar e ciência", "curso": "Enfermagem" },
+      { "letra": "C", "texto": "Economia, política e empreendedorismo", "curso": "Administração" }
     ]
   }
 ]
