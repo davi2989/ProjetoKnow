@@ -1,0 +1,155 @@
+/* ── RASPADINHA LOTERIA ── */
+.lottery-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+}
+.lottery-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--amarelo);
+    margin-bottom: .25rem;
+}
+.lottery-sub {
+    color: var(--cinza-claro);
+    margin-bottom: 1.75rem;
+    font-size: .95rem;
+}
+.lottery-card {
+    background: var(--preto);
+    border: 2px solid rgba(245,197,24,0.35);
+    border-radius: 4px;
+    padding: 1.5rem;
+    position: relative;
+    user-select: none;
+}
+.lottery-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid rgba(245,197,24,0.15);
+}
+.lottery-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: var(--amarelo);
+}
+.lottery-prize-label {
+    font-size: .7rem;
+    letter-spacing: 2px;
+    color: var(--cinza-claro);
+    text-transform: uppercase;
+}
+
+/* Grid de símbolos */
+.lottery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 1.25rem;
+}
+.lottery-cell {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    overflow: hidden;
+    cursor: crosshair;
+    display: block;
+}
+.lottery-cell-symbol {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    opacity: 0;
+    transition: opacity .15s;
+    pointer-events: none;
+}
+.lottery-cell-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.lottery-cell.revealed .lottery-cell-symbol { opacity: 1; }
+.lottery-cell.winner {
+    border-color: var(--amarelo);
+    background: rgba(245,197,24,0.12);
+    animation: cellWin .4s ease forwards;
+}
+@keyframes cellWin {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.lottery-instructions {
+    font-size: .8rem;
+    color: var(--cinza-claro);
+    margin-bottom: .75rem;
+    letter-spacing: .5px;
+}
+.lottery-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+.lottery-legend-item {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .75rem;
+    color: var(--cinza-claro);
+}
+.lottery-legend-item span { font-size: 1.1rem; }
+.lottery-prize-reveal {
+    display: none;
+    padding: 1.25rem;
+    background: rgba(245,197,24,0.08);
+    border: 1px solid rgba(245,197,24,0.35);
+    border-radius: 3px;
+    margin-top: 1rem;
+    text-align: center;
+}
+.lottery-prize-reveal.show { display: block; animation: revealIn .5s ease; }
+@keyframes revealIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.lp-icon { font-size: 3rem; margin-bottom: .5rem; }
+.lp-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--amarelo);
+}
+.lp-sub { color: var(--cinza-claro); font-size: .9rem; margin-top: .25rem; }
+.lp-msg {
+    margin-top: 1rem;
+    font-size: .85rem;
+    color: var(--branco);
+    background: rgba(245,197,24,0.12);
+    border-left: 3px solid var(--amarelo);
+    padding: .75rem 1rem;
+    text-align: left;
+}
+.lottery-blocked {
+    padding: 1.5rem;
+    background: rgba(231,76,60,0.08);
+    border: 1px solid rgba(231,76,60,0.25);
+    border-radius: 3px;
+    color: var(--vermelho);
+    font-size: .9rem;
+}

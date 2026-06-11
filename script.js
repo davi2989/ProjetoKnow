@@ -1,45 +1,57 @@
-// Dados carregados dos JSONs
-let PERGUNTAS = [];
-let PREMIOS = [];
-let CURSOS = [];
+// ─── DADOS ────────────────────────────────────────────────────────────────────
+let PERGUNTAS = [], PREMIOS = [], CURSOS = [];
 
-// INIT — carrega os JSONs e inicializa tudo
 Promise.all([
     fetch('quiz.json').then(r => r.json()),
     fetch('premios.json').then(r => r.json()),
     fetch('cursos.json').then(r => r.json())
 ]).then(([quiz, premios, cursos]) => {
     PERGUNTAS = quiz;
-    PREMIOS = premios;
-    CURSOS = cursos;
-    initRaspa();
+    PREMIOS   = premios;
+    CURSOS    = cursos;
+    renderCursos();
     renderLeads();
+    initLottery();
 });
 
-// SCROLL ANIMATIONS
+// ─── SCROLL FADE ─────────────────────────────────────────────────────────────
 const obs = new IntersectionObserver(es => {
     es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: .1 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
 // ─── TABS ────────────────────────────────────────────────────────────────────
-
 function switchTab(t) {
-    ['quiz', 'raspa', 'form'].forEach((n, i) => {
+    ['quiz','raspa','form'].forEach((n, i) => {
         document.querySelectorAll('.app-tab')[i].classList.toggle('active', n === t);
         document.getElementById('panel-' + n).classList.toggle('active', n === t);
     });
 }
 
-// ─── QUIZ ────────────────────────────────────────────────────────────────────
+// ─── CURSOS (renderização dinâmica a partir do JSON) ─────────────────────────
+function renderCursos() {
+    const grid = document.getElementById('cursos-grid');
+    if (!grid || !CURSOS.length) return;
+    const tagColors = { info: 'var(--azul)', enf: 'var(--verde)', adm: 'var(--laranja)' };
+    grid.innerHTML = CURSOS.map(c => `
+        <div class="curso-card ${c.id} fade-in">
+            <div class="curso-emoji">${c.emoji}</div>
+            <div class="curso-nome">${c.nome}</div>
+            <div class="curso-duracao">${c.duracao}</div>
+            <div class="curso-desc">${c.descricao}</div>
+            <div class="curso-tags">${c.tags.map(t => `<span class="curso-tag">${t}</span>`).join('')}</div>
+        </div>
+    `).join('');
+    grid.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+}
 
+// ─── QUIZ ─────────────────────────────────────────────────────────────────────
 let pts = {}, qIdx = 0, sel = [];
 const NUM_Q = 5;
 
 function startQuiz() {
     const s = localStorage.getItem('know_quiz');
     if (s) { const r = JSON.parse(s); showResult(r.curso, r.emoji, r.descricao); return; }
-
     pts = {}; qIdx = 0;
     const idx = [];
     while (idx.length < NUM_Q) {
@@ -95,122 +107,270 @@ function showScreen(id) {
     document.getElementById(id).classList.add('active');
 }
 
-// ─── RASPADINHA ───────────────────────────────────────────────────────────────
+// ─── RASPADINHA LOTERIA AMERICANA ────────────────────────────────────────────
+// Cada prêmio tem um símbolo principal + 2 emojis de apoio para preencher a grade.
+// A linha vencedora (3 iguais em uma fileira horizontal) é o prêmio ganho.
 
-let raspaCanvas, raspaCtx, raspaDrawing = false, raspaFeito = false, raspaTotal = 0;
+const LOTTERY_PRIZES = [
+    {
+        id: 'desc_10',
+        icon: '🎟️',
+        name: '10% de Desconto',
+        sub: 'Na sua primeira mensalidade!',
+        symbols: ['🎟️', '💸', '💰']   // símbolo do prêmio + 2 apoios
+    },
+    {
+        id: 'isencao',
+        icon: '🎁',
+        name: 'Isenção de Matrícula',
+        sub: 'Sua taxa de matrícula sai de graça!',
+        symbols: ['🎁', '🎓', '✨']
+    },
+    {
+        id: 'kit',
+        icon: '🎒',
+        name: 'Kit KNOW Oficial',
+        sub: 'Caderno, mochila e caneta do colégio!',
+        symbols: ['🎒', '📓', '✏️']
+    }
+];
 
-function initRaspa() {
-    const msg = document.getElementById('raspa-msg');
+let lotteryBoard = [];   // 3x3: lotteryBoard[row][col] = symbol
+let lotteryWinRow = -1; // qual fileira ganhou (-1 = nenhuma)
+let cellRevealed = [];   // 3x3 booleans
+let isDrawing = false;
+let lotteryDone = false;
+let activePrize = null;
+
+function initLottery() {
     const hoje = new Date().toDateString();
-    msg.style.display = 'none'; msg.className = 'raspa-msg';
-    document.getElementById('raspa-icon').textContent = '🎁';
-    document.getElementById('raspa-nome').textContent = 'Surpresa!';
-    document.getElementById('raspa-sub-txt').textContent = '';
-    document.getElementById('raspa-prog-fill').style.width = '0%';
-    document.getElementById('raspa-prog-label').textContent = '0% raspado';
-    document.getElementById('raspa-instrucao').textContent = 'Segure e arraste o mouse para raspar e descobrir seu brinde! Válido uma vez por dia.';
-    raspaFeito = false;
+    const bloqueado = document.getElementById('lottery-blocked-msg');
+    const game = document.getElementById('lottery-game');
 
-    // Sorteia prêmio do premios.json (campos: icon, name, sub)
-    const p = PREMIOS[Math.floor(Math.random() * PREMIOS.length)];
-    document.getElementById('raspa-icon').textContent = p.icon;
-    document.getElementById('raspa-nome').textContent = p.name;
-    document.getElementById('raspa-sub-txt').textContent = p.sub;
-
-    raspaCanvas = document.getElementById('raspa-canvas');
-    const bg = document.getElementById('raspa-premio-bg');
-    raspaCanvas.width = bg.offsetWidth;
-    raspaCanvas.height = bg.offsetHeight;
-    raspaTotal = raspaCanvas.width * raspaCanvas.height;
-    raspaCtx = raspaCanvas.getContext('2d');
+    // Reseta estado
+    lotteryDone = false;
+    lotteryBoard = [];
+    cellRevealed = [];
+    activePrize = null;
+    lotteryWinRow = -1;
 
     if (localStorage.getItem('know_raspa') === hoje) {
-        raspaCtx.fillStyle = '#333';
-        raspaCtx.fillRect(0, 0, raspaCanvas.width, raspaCanvas.height);
-        raspaCtx.fillStyle = '#e74c3c';
-        raspaCtx.font = 'bold 16px DM Sans, sans-serif';
-        raspaCtx.textAlign = 'center';
-        raspaCtx.fillText('Você já participou hoje!', raspaCanvas.width / 2, raspaCanvas.height / 2 - 10);
-        raspaCtx.fillStyle = '#888';
-        raspaCtx.font = '13px DM Sans, sans-serif';
-        raspaCtx.fillText('Volte amanhã para tentar novamente.', raspaCanvas.width / 2, raspaCanvas.height / 2 + 16);
-        raspaCanvas.style.cursor = 'not-allowed';
-        raspaFeito = true;
+        bloqueado.style.display = 'block';
+        game.style.display = 'none';
         return;
     }
+    bloqueado.style.display = 'none';
+    game.style.display = 'block';
 
-    raspaCanvas.style.cursor = 'crosshair';
-    for (let y = 0; y < raspaCanvas.height; y += 20) {
-        raspaCtx.fillStyle = y % 40 === 0 ? '#1a1a1a' : '#222';
-        raspaCtx.fillRect(0, y, raspaCanvas.width, 20);
+    // Oculta resultado anterior
+    const resultDiv = document.getElementById('lottery-result');
+    resultDiv.className = 'lottery-prize-reveal';
+    resultDiv.innerHTML = '';
+
+    // Sorteia o prêmio vencedor e a linha vencedora
+    activePrize = LOTTERY_PRIZES[Math.floor(Math.random() * LOTTERY_PRIZES.length)];
+    lotteryWinRow = Math.floor(Math.random() * 3); // 0, 1 ou 2
+
+    // Monta o pool de símbolos de TODOS os prêmios para as caselas "perdedoras"
+    const allSymbols = LOTTERY_PRIZES.flatMap(p => p.symbols);
+
+    // Constrói a grade 3x3
+    for (let r = 0; r < 3; r++) {
+        lotteryBoard[r] = [];
+        cellRevealed[r] = [];
+        for (let c = 0; c < 3; c++) {
+            if (r === lotteryWinRow) {
+                // fileira vencedora: tudo com o ícone principal do prêmio
+                lotteryBoard[r][c] = activePrize.icon;
+            } else {
+                // fileiras perdedoras: símbolo aleatório, garantindo que nunca
+                // forme 3 iguais acidentalmente em outra fileira
+                lotteryBoard[r][c] = pickLoser(allSymbols, activePrize.icon, r, c);
+            }
+            cellRevealed[r][c] = false;
+        }
     }
-    raspaCtx.fillStyle = '#f5c518';
-    raspaCtx.font = 'bold 18px Bebas Neue, sans-serif';
-    raspaCtx.textAlign = 'center';
-    raspaCtx.letterSpacing = '3px';
-    raspaCtx.fillText('RASPE AQUI ✦ RASPE AQUI ✦ RASPE AQUI', raspaCanvas.width / 2, raspaCanvas.height / 2 - 12);
-    raspaCtx.fillStyle = '#888';
-    raspaCtx.font = '13px DM Sans, sans-serif';
-    raspaCtx.fillText('Segure e arraste o mouse', raspaCanvas.width / 2, raspaCanvas.height / 2 + 14);
 
-    raspaCanvas.onmousedown = e => { raspaDrawing = true; raspar(e); };
-    raspaCanvas.onmousemove = e => { if (raspaDrawing) raspar(e); };
-    raspaCanvas.onmouseup = () => raspaDrawing = false;
-    raspaCanvas.onmouseleave = () => raspaDrawing = false;
-    raspaCanvas.ontouchstart = e => { e.preventDefault(); raspaDrawing = true; rasparTouch(e); };
-    raspaCanvas.ontouchmove = e => { e.preventDefault(); if (raspaDrawing) rasparTouch(e); };
-    raspaCanvas.ontouchend = () => raspaDrawing = false;
+    renderLotteryGrid();
+    renderLotteryLegend();
 }
 
-function getPosCanvas(e) {
-    const r = raspaCanvas.getBoundingClientRect();
-    return { x: e.clientX - r.left, y: e.clientY - r.top };
+function pickLoser(pool, winSymbol, row, col) {
+    // Embaralha e pega o primeiro que não seja o símbolo vencedor
+    const shuffled = pool.slice().sort(() => Math.random() - .5);
+    for (const sym of shuffled) {
+        if (sym !== winSymbol) return sym;
+    }
+    return pool[0]; // fallback
 }
 
-function raspar(e) {
-    if (raspaFeito) return;
-    const pos = getPosCanvas(e);
-    raspaCtx.globalCompositeOperation = 'destination-out';
-    raspaCtx.beginPath();
-    raspaCtx.arc(pos.x, pos.y, 22, 0, Math.PI * 2);
-    raspaCtx.fill();
-    calcProgresso();
+function renderLotteryLegend() {
+    const legend = document.getElementById('lottery-legend');
+    legend.innerHTML = LOTTERY_PRIZES.map(p =>
+        `<div class="lottery-legend-item"><span>${p.icon}</span> ${p.name}</div>`
+    ).join('');
 }
 
-function rasparTouch(e) {
-    if (raspaFeito) return;
+function renderLotteryGrid() {
+    const grid = document.getElementById('lottery-grid');
+    grid.innerHTML = '';
+
+    for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < 3; c++) {
+            const cell = document.createElement('div');
+            cell.className = 'lottery-cell';
+            cell.dataset.row = r;
+            cell.dataset.col = c;
+
+            // Símbolo (escondido inicialmente)
+            const sym = document.createElement('div');
+            sym.className = 'lottery-cell-symbol';
+            sym.textContent = lotteryBoard[r][c];
+            cell.appendChild(sym);
+
+            // Canvas de cobertura
+            const canvas = document.createElement('canvas');
+            canvas.className = 'lottery-cell-cover';
+            cell.appendChild(canvas);
+
+            // Inicializa o canvas de raspar
+            requestAnimationFrame(() => initCellCanvas(canvas, cell, r, c));
+
+            grid.appendChild(cell);
+        }
+    }
+}
+
+function initCellCanvas(canvas, cell, row, col) {
+    const rect = cell.getBoundingClientRect();
+    const w = rect.width || cell.offsetWidth;
+    const h = rect.height || cell.offsetHeight;
+    if (!w || !h) { setTimeout(() => initCellCanvas(canvas, cell, row, col), 50); return; }
+
+    canvas.width  = Math.round(w);
+    canvas.height = Math.round(h);
+    canvas.style.width  = Math.round(w) + 'px';
+    canvas.style.height = Math.round(h) + 'px';
+    const ctx = canvas.getContext('2d');
+
+    // Fundo da cobertura: estilo lottery com gradiente dourado
+    const grad = ctx.createLinearGradient(0, 0, w, h);
+    grad.addColorStop(0, '#2a2310');
+    grad.addColorStop(0.5, '#3d3418');
+    grad.addColorStop(1, '#2a2310');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Padrão de linhas diagonais
+    ctx.strokeStyle = 'rgba(245,197,24,0.08)';
+    ctx.lineWidth = 1;
+    for (let x = -h; x < w + h; x += 8) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + h, h); ctx.stroke();
+    }
+
+    // Símbolo de raspar no centro
+    ctx.fillStyle = 'rgba(245,197,24,0.5)';
+    ctx.font = `bold ${Math.floor(w * 0.22)}px DM Sans, sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('?', w / 2, h / 2);
+
+    // Eventos de mouse
+    let drawing = false;
+    let totalPixels = w * h;
+    let revealedPct = 0;
+
+    canvas.addEventListener('mousedown', e => { e.preventDefault(); drawing = true; scratchAt(e, ctx, canvas, cell, row, col, totalPixels); });
+    canvas.addEventListener('mousemove', e => { if (!drawing) return; scratchAt(e, ctx, canvas, cell, row, col, totalPixels); });
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mouseleave', () => drawing = false);
+    canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; scratchAtTouch(e, ctx, canvas, cell, row, col, totalPixels); }, { passive: false });
+    canvas.addEventListener('touchmove', e => { e.preventDefault(); if (drawing) scratchAtTouch(e, ctx, canvas, cell, row, col, totalPixels); }, { passive: false });
+    canvas.addEventListener('touchend', () => drawing = false);
+}
+
+function scratchAt(e, ctx, canvas, cell, row, col, totalPixels) {
+    if (lotteryDone && !cellRevealed[row][col]) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    doScratch(x, y, ctx, canvas, cell, row, col, totalPixels);
+}
+
+function scratchAtTouch(e, ctx, canvas, cell, row, col, totalPixels) {
     const t = e.touches[0];
-    const r = raspaCanvas.getBoundingClientRect();
-    raspaCtx.globalCompositeOperation = 'destination-out';
-    raspaCtx.beginPath();
-    raspaCtx.arc(t.clientX - r.left, t.clientY - r.top, 28, 0, Math.PI * 2);
-    raspaCtx.fill();
-    calcProgresso();
+    const rect = canvas.getBoundingClientRect();
+    doScratch(t.clientX - rect.left, t.clientY - rect.top, ctx, canvas, cell, row, col, totalPixels);
 }
 
-function calcProgresso() {
-    const img = raspaCtx.getImageData(0, 0, raspaCanvas.width, raspaCanvas.height);
+function doScratch(x, y, ctx, canvas, cell, row, col, totalPixels) {
+    if (cellRevealed[row][col]) return;
+
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(x, y, 18, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Conta transparência para detectar quando a casela está suficientemente raspada
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
     let transparent = 0;
-    for (let i = 3; i < img.data.length; i += 4) { if (img.data[i] === 0) transparent++; }
-    const pct = Math.min(100, Math.round(transparent / raspaTotal * 100));
-    document.getElementById('raspa-prog-fill').style.width = pct + '%';
-    document.getElementById('raspa-prog-label').textContent = pct + '% raspado';
-    if (pct >= 5 && !raspaFeito) {
-        raspaFeito = true;
-        raspaCtx.globalCompositeOperation = 'destination-out';
-        raspaCtx.fillRect(0, 0, raspaCanvas.width, raspaCanvas.height);
-        document.getElementById('raspa-prog-fill').style.width = '100%';
-        document.getElementById('raspa-prog-label').textContent = '100% raspado 🎉';
-        localStorage.setItem('know_raspa', new Date().toDateString());
-        const msg = document.getElementById('raspa-msg');
-        msg.textContent = '🎊 Parabéns! Apresente esta tela na secretaria para retirar seu brinde. Válido por 30 dias.';
-        msg.style.display = 'block';
-        raspaCanvas.style.cursor = 'default';
+    for (let i = 3; i < data.length; i += 4) { if (data[i] < 10) transparent++; }
+    const pct = transparent / totalPixels;
+
+    if (pct >= 0.50) {
+        // Raspa o restante desta casela
+        revealCell(ctx, canvas, cell, row, col);
     }
+}
+
+function revealCell(ctx, canvas, cell, row, col) {
+    if (cellRevealed[row][col]) return;
+    cellRevealed[row][col] = true;
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    cell.classList.add('revealed');
+    checkWin();
+}
+
+function checkWin() {
+    // Verifica se a fileira vencedora está completamente revelada
+    const winRowRevealed = cellRevealed[lotteryWinRow] && cellRevealed[lotteryWinRow].every(v => v);
+    if (!winRowRevealed) return;
+
+    // Destaca as 3 caselas vencedoras
+    const cells = document.querySelectorAll('.lottery-cell');
+    for (let c = 0; c < 3; c++) {
+        cells[lotteryWinRow * 3 + c].classList.add('winner');
+    }
+
+    lotteryDone = true;
+    localStorage.setItem('know_raspa', new Date().toDateString());
+
+    // Revela também as outras fileiras (opcional, mostra o jogo todo)
+    setTimeout(() => {
+        const allCells = document.querySelectorAll('.lottery-cell');
+        allCells.forEach((cell, idx) => {
+            const r = Math.floor(idx / 3), c = idx % 3;
+            if (!cellRevealed[r][c]) {
+                const canvas = cell.querySelector('canvas');
+                const ctx = canvas.getContext('2d');
+                revealCell(ctx, canvas, cell, r, c);
+            }
+        });
+
+        // Mostra o prêmio
+        const resultDiv = document.getElementById('lottery-result');
+        resultDiv.innerHTML = `
+            <div class="lp-icon">${activePrize.icon}</div>
+            <div class="lp-name">${activePrize.name}</div>
+            <div class="lp-sub">${activePrize.sub}</div>
+            <div class="lp-msg">🎊 Parabéns! Apresente esta tela na secretaria para retirar seu brinde. Válido por 30 dias.</div>
+        `;
+        resultDiv.classList.add('show');
+    }, 500);
 }
 
 // ─── FORMULÁRIO ───────────────────────────────────────────────────────────────
-
 function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
 function showErr(id, show) {
@@ -219,37 +379,48 @@ function showErr(id, show) {
 }
 
 function submitForm() {
-    const nome = document.getElementById('f-nome').value.trim();
+    const nome  = document.getElementById('f-nome').value.trim();
     const idade = parseInt(document.getElementById('f-idade').value);
     const email = document.getElementById('f-email').value.trim();
     const curso = document.getElementById('f-curso').value;
     let ok = true;
-    showErr('nome', !nome || nome.length < 3); if (!nome || nome.length < 3) ok = false;
+    showErr('nome',  !nome || nome.length < 3);  if (!nome || nome.length < 3) ok = false;
     showErr('idade', isNaN(idade) || idade < 14 || idade > 80); if (isNaN(idade) || idade < 14 || idade > 80) ok = false;
-    showErr('email', !validateEmail(email)); if (!validateEmail(email)) ok = false;
-    showErr('curso', !curso); if (!curso) ok = false;
+    showErr('email', !validateEmail(email));      if (!validateEmail(email)) ok = false;
+    showErr('curso', !curso);                     if (!curso) ok = false;
     if (!ok) return;
     const leads = JSON.parse(localStorage.getItem('know_leads') || '[]');
     leads.push({ nome, idade, email, curso, data: new Date().toLocaleDateString('pt-BR') });
     localStorage.setItem('know_leads', JSON.stringify(leads));
-    document.getElementById('f-nome').value = ''; document.getElementById('f-idade').value = '';
-    document.getElementById('f-email').value = ''; document.getElementById('f-curso').value = '';
-    const s = document.getElementById('form-success'); s.classList.add('show');
+    document.getElementById('f-nome').value = '';
+    document.getElementById('f-idade').value = '';
+    document.getElementById('f-email').value = '';
+    document.getElementById('f-curso').value = '';
+    const s = document.getElementById('form-success');
+    s.classList.add('show');
     setTimeout(() => s.classList.remove('show'), 4000);
     renderLeads();
 }
 
 function renderLeads() {
     const leads = JSON.parse(localStorage.getItem('know_leads') || '[]');
-    const cont = document.getElementById('leads-container');
-    const cnt = document.getElementById('leads-count');
-    if (!leads.length) { cont.innerHTML = '<div class="admin-empty">Nenhum cadastro ainda. Os dados aparecerão aqui após envio do formulário.</div>'; cnt.textContent = ''; return; }
+    const cont  = document.getElementById('leads-container');
+    const cnt   = document.getElementById('leads-count');
+    if (!leads.length) {
+        cont.innerHTML = '<div class="admin-empty">Nenhum cadastro ainda. Os dados aparecerão aqui após envio do formulário.</div>';
+        cnt.textContent = ''; return;
+    }
     cnt.textContent = leads.length + ' cadastro(s) registrado(s)';
     let h = '<div style="overflow-x:auto"><table class="leads-table"><thead><tr><th>Nome</th><th>Idade</th><th>Curso</th><th>Data</th></tr></thead><tbody>';
-    leads.forEach(l => { h += `<tr><td><strong>${l.nome}</strong><br><small style="color:var(--cinza-claro)">${l.email}</small></td><td>${l.idade}</td><td>${l.curso}</td><td>${l.data}</td></tr>`; });
-    h += '</tbody></table></div>'; cont.innerHTML = h;
+    leads.forEach(l => {
+        h += `<tr><td><strong>${l.nome}</strong><br><small style="color:var(--cinza-claro)">${l.email}</small></td><td>${l.idade}</td><td>${l.curso}</td><td>${l.data}</td></tr>`;
+    });
+    h += '</tbody></table></div>';
+    cont.innerHTML = h;
 }
 
 function clearLeads() {
-    if (confirm('Tem certeza que deseja apagar todos os cadastros?')) { localStorage.removeItem('know_leads'); renderLeads(); }
+    if (confirm('Tem certeza que deseja apagar todos os cadastros?')) {
+        localStorage.removeItem('know_leads'); renderLeads();
+    }
 }
