@@ -1,0 +1,137 @@
+.form-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem
+}
+
+.form-section {
+    background: var(--preto);
+    border: 1px solid rgba(245, 197, 24, 0.15);
+    padding: 2.5rem
+}
+
+.form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--amarelo);
+    margin-bottom: 1.5rem
+}
+
+.form-group {
+    margin-bottom: 1.5rem
+}
+
+.form-label {
+    display: block;
+    font-size: .8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cinza-claro);
+    margin-bottom: .5rem
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: .9rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem;
+    transition: border-color .2s;
+    outline: none
+}
+
+.form-input:focus,
+.form-select:focus {
+    border-color: var(--amarelo)
+}
+
+.form-input.error,
+.form-select.error {
+    border-color: var(--vermelho)
+}
+
+.form-select option {
+    background: var(--cinza)
+}
+
+.form-error {
+    font-size: .78rem;
+    color: var(--vermelho);
+    margin-top: .3rem;
+    display: none
+}
+
+.form-error.show {
+    display: block
+}
+
+.form-success {
+    display: none;
+    padding: 1rem;
+    background: rgba(46, 204, 113, 0.1);
+    border-left: 3px solid var(--verde);
+    margin-top: 1rem;
+    font-size: .9rem;
+    color: var(--verde)
+}
+
+.form-success.show {
+    display: block
+}
+
+.admin-empty {
+    color: var(--cinza-claro);
+    font-size: .9rem;
+    text-align: center;
+    padding: 2rem
+}
+
+.leads-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem
+}
+
+.leads-table th {
+    text-align: left;
+    padding: .75rem 1rem;
+    font-size: .75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cinza-claro);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+}
+
+.leads-table td {
+    padding: .75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+}
+
+.leads-table tr:hover td {
+    background: rgba(245, 197, 24, 0.04)
+}
+
+.leads-count {
+    font-size: .85rem;
+    color: var(--cinza-claro);
+    margin-bottom: 1rem
+}
+
+.btn-danger {
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    color: var(--vermelho);
+    padding: .4rem .8rem;
+    font-size: .75rem;
+    cursor: pointer;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif
+}
+
+.btn-danger:hover {
+    background: var(--vermelho);
+    color: #fff
+}

@@ -1,0 +1,232 @@
+.quiz-wrap {
+    background: var(--preto);
+    border: 1px solid rgba(245, 197, 24, 0.2);
+    padding: 3rem;
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative
+}
+
+.quiz-wrap::before {
+    content: 'QUIZ';
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: rgba(245, 197, 24, 0.05);
+    line-height: 1
+}
+
+.quiz-screen {
+    display: none
+}
+
+.quiz-screen.active {
+    display: block
+}
+
+.quiz-welcome-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--amarelo);
+    margin-bottom: .5rem
+}
+
+.quiz-welcome-sub {
+    color: var(--cinza-claro);
+    margin-bottom: 2rem;
+    line-height: 1.6
+}
+
+.progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-bottom: .75rem
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--amarelo);
+    border-radius: 2px;
+    transition: width .4s ease
+}
+
+.progress-label {
+    font-size: .8rem;
+    color: var(--cinza-claro)
+}
+
+.quiz-question {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 1.5rem 0 2rem;
+    line-height: 1.5
+}
+
+.quiz-opts {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem
+}
+
+.quiz-opt {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    text-align: left;
+    font-size: .95rem;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif
+}
+
+.quiz-opt:hover {
+    border-color: var(--amarelo);
+    color: var(--amarelo);
+    background: rgba(245, 197, 24, 0.05)
+}
+
+.quiz-opt-letter {
+    width: 28px;
+    height: 28px;
+    border: 1px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 700;
+    flex-shrink: 0
+}
+
+.quiz-result-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem
+}
+
+.quiz-result-course {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--amarelo)
+}
+
+.quiz-result-text {
+    color: var(--cinza-claro);
+    margin: 1rem 0 2rem;
+    line-height: 1.6
+}
+
+.quiz-result-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap
+}
+
+/* ── RASPADINHA ─────────────────────────────────────────────────────────── */
+
+.raspa-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center
+}
+
+.raspa-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--amarelo);
+    margin-bottom: .5rem
+}
+
+.raspa-sub {
+    color: var(--cinza-claro);
+    margin-bottom: 2.5rem
+}
+
+.raspa-canvas-wrap {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 480px
+}
+
+.raspa-premio-bg {
+    width: 100%;
+    height: 220px;
+    background: var(--preto);
+    border: 2px solid rgba(245, 197, 24, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem
+}
+
+.raspa-icon-display {
+    font-size: 3.5rem
+}
+
+.raspa-nome-display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--amarelo)
+}
+
+.raspa-sub-txt-display {
+    color: var(--cinza-claro);
+    font-size: .9rem
+}
+
+.raspa-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: crosshair;
+    touch-action: none
+}
+
+.raspa-prog-wrap {
+    margin-top: .75rem;
+    width: 100%;
+    max-width: 480px
+}
+
+.raspa-progresso {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px
+}
+
+.raspa-prog-fill {
+    height: 100%;
+    background: var(--amarelo);
+    border-radius: 2px;
+    width: 0%;
+    transition: width .1s
+}
+
+.raspa-prog-label {
+    font-size: .75rem;
+    color: var(--cinza-claro);
+    margin-top: .4rem
+}
+
+.raspa-msg {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(245, 197, 24, 0.1);
+    border-left: 3px solid var(--amarelo);
+    text-align: left;
+    font-size: .9rem
+}
+
+.raspa-blocked {
+    background: rgba(231, 76, 60, 0.1) !important;
+    border-left-color: var(--vermelho) !important;
+    color: var(--vermelho)
+}

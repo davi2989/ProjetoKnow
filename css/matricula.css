@@ -1,0 +1,109 @@
+#matricula {
+    background: var(--preto);
+    position: relative;
+    overflow: hidden
+}
+
+#matricula::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(245, 197, 24, 0.08) 0%, transparent 60%)
+}
+
+.matricula-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1
+}
+
+.matricula-inner .section-title {
+    font-size: clamp(3rem, 6vw, 5rem)
+}
+
+.matricula-inner .section-desc {
+    margin: 0 auto 3rem
+}
+
+.matricula-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+footer {
+    background: var(--cinza);
+    padding: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem
+}
+
+.footer-copy {
+    font-size: .85rem;
+    color: var(--cinza-claro)
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem
+}
+
+.footer-links a {
+    font-size: .85rem;
+    color: var(--cinza-claro);
+    text-decoration: none;
+    transition: color .2s
+}
+
+.footer-links a:hover {
+    color: var(--amarelo)
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+@media(max-width:900px) {
+    nav {
+        padding: 1rem 1.5rem
+    }
+
+    nav ul {
+        display: none
+    }
+
+    section {
+        padding: 4rem 1.5rem
+    }
+
+    #home {
+        padding: 7rem 1.5rem 4rem
+    }
+
+    .hero-img-area {
+        display: none
+    }
+
+    .sobre-grid,
+    .cursos-grid,
+    .form-wrap {
+        grid-template-columns: 1fr
+    }
+
+    .apps-nav {
+        flex-direction: column
+    }
